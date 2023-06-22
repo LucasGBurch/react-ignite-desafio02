@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 // font-family: 'Baloo 2', cursive;
 // font-family: 'Roboto', sans-serif;
@@ -15,20 +15,20 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: ${props => props.theme.background};
-    color: ${props => props.theme["base-text"]};
+    background: ${(props) => props.theme.background};
+    color: ${(props) => props.theme['base-text']};
   }
 
   input {
-    color: ${props => props.theme["base-input"]};
+    color: ${(props) => props.theme['base-input']};
   }
 
   label {
-    color: ${props => props.theme["base-label"]};
+    color: ${(props) => props.theme['base-label']};
   }
 
   button {
-    background: ${props => props.theme["base-button"]};;
+    background: ${(props) => props.theme['base-button']};;
   }
 
   body, input, button, label {
