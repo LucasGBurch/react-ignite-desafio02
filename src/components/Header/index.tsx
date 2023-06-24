@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom';
 import { HeaderContainer } from './styles';
 
 import logoImg from '../../assets/Logo.svg';
-import { MapPin } from 'phosphor-react';
+import { MapPin, ShoppingCart } from 'phosphor-react';
 import { useTheme } from 'styled-components';
 
 export function Header() {
   const theme = useTheme();
+
+  const cartIsNotEmpty = false;
 
   return (
     <HeaderContainer>
@@ -19,7 +21,12 @@ export function Header() {
           <span>Porto Alegre, RS</span>
         </div>
 
-        <Link to='/checkout'></Link>
+        <Link to='/checkout'>
+          {cartIsNotEmpty && <div>
+            <span>3</span>
+          </div>}
+          <ShoppingCart color={theme['yellow-dark']} size={22} weight='fill' />
+        </Link>
       </nav>
     </HeaderContainer>
   );
