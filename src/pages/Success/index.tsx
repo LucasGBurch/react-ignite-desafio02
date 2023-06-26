@@ -5,21 +5,42 @@ import { SuccessContainer } from './styles';
 export function Success() {
   return (
     <SuccessContainer>
-      <h2>Uhu! Pedido confirmado</h2>
-      <h3>Agora é só aguardar que logo o café chegará até você</h3>
       <section>
         <div>
-          <MapPin weight='fill' />
-          <p></p>
+          <h2>Uhu! Pedido confirmado</h2>
+          <p>Agora é só aguardar que logo o café chegará até você</p>
         </div>
-        <div>
-          <Timer weight='fill' />
-          <p></p>
-        </div>
-        <div>
-          <CurrencyDollar />
-          <p></p>
-        </div>
+      </section>
+      <section>
+        <ul>
+          <li>
+            <MapPin id='MapPinSuccess' size={32} weight='fill' />
+            <div>
+              <span>
+                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+              </span>
+              <span>Farrapos - Porto Alegre, RS</span>
+            </div>
+          </li>
+          <li>
+            <Timer id='TimerSuccess' size={32} weight='fill' />
+            <div>
+              <span>Previsão de entrega</span>
+              <span>
+                <strong>20 min - 30 min</strong>
+              </span>
+            </div>
+          </li>
+          <li>
+            <CurrencyDollar id='CurrencyDollarSuccess' size={32} />
+            <div>
+              <span>Previsão de entrega</span>
+              <span>
+                <strong>20 min - 30 min</strong>
+              </span>
+            </div>
+          </li>
+        </ul>
         <img
           src={successImg}
           alt='Entregador em cima de sua lambreta indo entregar o pedido'
