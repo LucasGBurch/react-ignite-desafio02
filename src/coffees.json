@@ -121,7 +121,7 @@
       "name": "Irlandês",
       "description": "Bebida a base de café, uísque irlandês, açúcar e chantilly",
       "price": 9.90,
-      "coffeeImg": "./assets/Type=Expresso.svg",
+      "coffeeImg": "./assets/Type=Irlandes.svg",
       "tipo1": "ESPECIAL",
       "tipo2": "ALCOÓLICO",
       "tipo3": ""
