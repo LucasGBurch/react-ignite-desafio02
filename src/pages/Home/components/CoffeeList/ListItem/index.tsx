@@ -1,6 +1,9 @@
 import { Minus, Plus, ShoppingCart } from 'phosphor-react';
 import { ListItemContainer } from './styles';
 
+// import coffeimg from '../../../../../assets/' 
+// teste do caminho para colocar no objeto json das imagens
+
 interface ListItemProps {
   name: string;
   description: string;
@@ -22,7 +25,7 @@ export function ListItem({
 }: ListItemProps) {
   return (
     <ListItemContainer>
-      <img src={coffeeImg} />
+      <img src={coffeeImg} alt={`Imagem do ${name}`}/>
       <div>
         <span>{tipo1}</span>
         {tipo2 && <span>{tipo2}</span>}
