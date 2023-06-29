@@ -23,6 +23,10 @@ export function ListItem({
   tipo2,
   tipo3,
 }: ListItemProps) {
+
+  const quantity = 1;
+  const value = quantity * price;
+
   return (
     <ListItemContainer>
       <img src={coffeeImg} alt={`Imagem do ${name}`}/>
@@ -34,15 +38,19 @@ export function ListItem({
       <h3>{name}</h3>
       <p>{description}</p>
       <section>
-        <span>{price}</span>
-        <button>
-          <Minus weight='bold' />
-        </button>
-        <span>1</span>
-        <button>
-          <Plus weight='bold' />
-        </button>
-        <ShoppingCart id='ListItemCart' weight='fill' />
+        <span>{value}</span>
+        <div>
+          <button>
+            <Minus size={14} weight='bold' id='ListItemMinus' />
+          </button>
+          <span>{quantity}</span>
+          <button>
+            <Plus size={14} weight='bold' id='ListItemPlus' />
+          </button>
+        </div>
+        <div>
+          <ShoppingCart id='ListItemCart' size={22} weight='fill' />
+        </div>
       </section>
     </ListItemContainer>
   );
