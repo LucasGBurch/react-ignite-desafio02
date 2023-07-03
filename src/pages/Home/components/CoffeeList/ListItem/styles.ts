@@ -5,7 +5,8 @@ export const ListItemContainer = styled.li`
   flex-direction: column;
 
   align-items: center;
-  justify-content: space-between;
+  gap: 1rem;
+
   padding: 1.25rem;
 
   background-color: ${(props) => props.theme['base-card']};
@@ -50,7 +51,7 @@ export const ListItemContainer = styled.li`
   section {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 8px;
 
     div {
       border-radius: 6px;
@@ -69,6 +70,25 @@ export const ListItemContainer = styled.li`
 
       button {
         border: none;
+      }
+    }
+
+    div:first-child {
+      border-radius: 0;
+      background-color: ${(props) => props.theme['base-card']};
+      display: flex;
+      gap: 0;
+
+      span {
+        background-color: ${(props) => props.theme['base-card']};
+        color: ${(props) => props.theme['base-text']};
+        font-size:0.825rem;
+      }
+
+      span:last-child {
+        font-family: 'Baloo 2', cursive;
+        font-size: 1.5rem;
+        font-weight: 800;
       }
     }
 

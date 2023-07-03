@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-export const CoffeeListContainer = styled.ul`
+export const CoffeeListContainer = styled.section`
   max-width: 70rem;
+  height: 102rem;
 
-  section {
+  ul {
     display: grid;
     grid-template-columns: repeat(4, 25%);
     grid-template-rows: repeat(4, 25%);

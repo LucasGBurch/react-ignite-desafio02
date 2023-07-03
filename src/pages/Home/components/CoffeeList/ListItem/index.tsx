@@ -25,7 +25,8 @@ export function ListItem({
 }: ListItemProps) {
 
   const quantity = 1;
-  const value = quantity * price;
+  const numberValue = (quantity * price).toFixed(2);
+  const valueFormatted = String(numberValue).replace('.', ',');
 
   return (
     <ListItemContainer>
@@ -38,7 +39,10 @@ export function ListItem({
       <h3>{name}</h3>
       <p>{description}</p>
       <section>
-        <span>{value}</span>
+        <div>
+          <span>R$</span>
+          <span>{valueFormatted}</span>
+        </div>
         <div>
           <button>
             <Minus size={14} weight='bold' id='ListItemMinus' />
