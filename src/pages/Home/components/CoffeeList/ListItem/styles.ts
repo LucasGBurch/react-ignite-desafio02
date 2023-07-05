@@ -70,6 +70,11 @@ export const ListItemContainer = styled.li`
 
       button {
         border: none;
+        color: ${(props) => props.theme.purple};
+
+        &:hover {
+          color: ${(props) => props.theme['purple-dark']};
+        }
       }
     }
 
@@ -82,7 +87,7 @@ export const ListItemContainer = styled.li`
       span {
         background-color: ${(props) => props.theme['base-card']};
         color: ${(props) => props.theme['base-text']};
-        font-size:0.825rem;
+        font-size: 0.825rem;
       }
 
       span:last-child {
@@ -99,6 +104,10 @@ export const ListItemContainer = styled.li`
       background-color: ${(props) => props.theme['purple-dark']};
       border-radius: 6px;
       width: 2.375rem;
+
+      &:hover {
+        background-color: ${(props) => props.theme.purple};
+      }
     }
   }
 
