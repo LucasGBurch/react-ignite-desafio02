@@ -69,6 +69,7 @@ export const ListItemContainer = styled.li`
       }
 
       button {
+        cursor: pointer;
         border: none;
         color: ${(props) => props.theme.purple};
 
@@ -98,15 +99,21 @@ export const ListItemContainer = styled.li`
     }
 
     div:last-child {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: ${(props) => props.theme['purple-dark']};
-      border-radius: 6px;
       width: 2.375rem;
 
-      &:hover {
-        background-color: ${(props) => props.theme.purple};
+      button {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: ${(props) => props.theme['purple-dark']};
+        border-radius: 6px;
+        height: 2.375rem;
+        width: 2.375rem;
+        
+        &:hover {
+          background-color: ${(props) => props.theme.purple};
+        }
       }
     }
   }

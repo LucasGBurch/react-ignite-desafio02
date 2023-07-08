@@ -19,7 +19,8 @@ export const BaseFormInput = styled.input`
 
     // se não funfar, tentar um span dentro
     &::after {
-
+      content: 'Opcional';
+      font-style: italic;
     }
   }
 

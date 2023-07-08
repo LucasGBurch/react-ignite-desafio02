@@ -1,7 +1,8 @@
 import { Minus, Plus, ShoppingCart } from 'phosphor-react';
 import { ListItemContainer } from './styles';
+import { useState } from 'react';
 
-// import coffeimg from '../../../../../assets/' 
+// import coffeimg from '../../../../../assets/'
 // teste do caminho para colocar no objeto json das imagens
 
 interface ListItemProps {
@@ -23,14 +24,31 @@ export function ListItem({
   tipo2,
   tipo3,
 }: ListItemProps) {
+  const [coffeeQuantity, setCoffeeQuantity] = useState<number>(0);
 
-  const quantity = 1;
-  const numberValue = (quantity * price).toFixed(2);
-  const valueFormatted = String(numberValue).replace('.', ',');
+  const priceAmount = (price * coffeeQuantity).toFixed(2);
+
+  const valueFormatted = String(priceAmount).replace('.', ',');
+
+  function minusOneCoffeeHandler() {
+    if (coffeeQuantity > 0) {
+      setCoffeeQuantity((prevQuantity) => prevQuantity - 1);
+    }
+  }
+
+  function PlusOneCoffeeHandler() {
+    if (coffeeQuantity < 9) {
+      setCoffeeQuantity((prevQuantity) => prevQuantity + 1);
+    }
+  }
+
+  function addToTheCartHandler() {
+    
+  }
 
   return (
     <ListItemContainer>
-      <img src={coffeeImg} alt={`Imagem do ${name}`}/>
+      <img src={coffeeImg} alt={`Imagem do ${name}`} />
       <div>
         <span>{tipo1}</span>
         {tipo2 && <span>{tipo2}</span>}
@@ -44,16 +62,18 @@ export function ListItem({
           <span>{valueFormatted}</span>
         </div>
         <div>
-          <button>
+          <button onClick={minusOneCoffeeHandler}>
             <Minus size={14} weight='bold' id='ListItemMinus' />
           </button>
-          <span>{quantity}</span>
-          <button>
+          <span>{coffeeQuantity}</span>
+          <button onClick={PlusOneCoffeeHandler}>
             <Plus size={14} weight='bold' id='ListItemPlus' />
           </button>
         </div>
         <div>
-          <ShoppingCart id='ListItemCart' size={22} weight='fill' />
+          <button onClick={addToTheCartHandler}>
+            <ShoppingCart id='ListItemCart' size={22} weight='fill' />
+          </button>
         </div>
       </section>
     </ListItemContainer>
