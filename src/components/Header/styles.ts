@@ -35,7 +35,7 @@ export const HeaderContainer = styled.header`
       justify-content: center;
 
       border-radius: 6px;
-      background: ${(props) => props.theme['purple-light']};
+      background-color: ${props => props.theme['yellow-light']};
 
       width: 2.375rem;
 
@@ -57,6 +57,10 @@ export const HeaderContainer = styled.header`
         height: 1.2rem;
         width: 1.2rem;
       }
+    }
+
+    #HeaderShoppingCart {
+      color: ${props => props.theme['yellow-dark']};
     }
   }
 `;

@@ -25,7 +25,7 @@ export function Header() {
           {cartIsNotEmpty && <div>
             <span>3</span>
           </div>}
-          <ShoppingCart color={theme['yellow-dark']} size={22} weight='fill' />
+          <ShoppingCart id='HeaderShoppingCart' size={22} weight='fill' />
         </Link>
       </nav>
     </HeaderContainer>
