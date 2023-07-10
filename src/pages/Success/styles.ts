@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
 export const SuccessContainer = styled.main`
-  height: 24.563rem;
-  margin-top: 5rem;
+  height: 26rem;
+  width: 90rem;
+
   display: flex;
   flex-direction: column;
-  width: 70rem;
+
+  margin-top: 5rem;
+  padding: 0 10rem;
 
   section {
     display: flex;
@@ -101,7 +104,7 @@ export const SuccessContainer = styled.main`
     }
 
     #CurrencyDollarSuccess {
-      background: ${(props) => props.theme['yellow-dark']}
+      background: ${(props) => props.theme['yellow-dark']};
     }
   }
 `;

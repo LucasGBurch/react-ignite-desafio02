@@ -6,11 +6,16 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
 
   height: 6.5rem;
+  max-width: 90rem;
+  padding: 2rem 10rem;
+
+  position: sticky; // ISTO AQUI FAZ O HEADER
+  top: 0; // SEGUIR NO TOPO QUANDO SCROLLAR
+  background-color: ${props => props.theme.background};
 
   nav {
     display: flex;
     justify-content: space-between;
-
 
     height: 2.375rem;
     width: 12.75rem;
@@ -35,7 +40,7 @@ export const HeaderContainer = styled.header`
       justify-content: center;
 
       border-radius: 6px;
-      background-color: ${props => props.theme['yellow-light']};
+      background-color: ${(props) => props.theme['yellow-light']};
 
       width: 2.375rem;
 
@@ -44,8 +49,8 @@ export const HeaderContainer = styled.header`
         align-items: center;
         justify-content: center;
 
-        background: ${props => props.theme['yellow-dark']};
-        color: ${props => props.theme.white};
+        background: ${(props) => props.theme['yellow-dark']};
+        color: ${(props) => props.theme.white};
         position: absolute;
         margin-top: -2.25rem;
         margin-right: -2.25rem;
@@ -60,7 +65,7 @@ export const HeaderContainer = styled.header`
     }
 
     #HeaderShoppingCart {
-      color: ${props => props.theme['yellow-dark']};
+      color: ${(props) => props.theme['yellow-dark']};
     }
   }
 `;

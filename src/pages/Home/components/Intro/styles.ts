@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const IntroContainer = styled.section`
   height: 34rem;
+  max-width: 90rem;
+
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const CoffeeListContainer = styled.section`
-  max-width: 70rem;
+  width: 70rem;
   height: 102rem;
 
   ul {
