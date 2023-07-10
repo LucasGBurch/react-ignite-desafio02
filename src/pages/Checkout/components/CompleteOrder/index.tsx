@@ -32,6 +32,7 @@ export function CompleteOrder() {
           <StreetInput placeholder='Rua' />
           <CepNumberNeighborInput placeholder='Numero' />
           <ComplementInput placeholder='Complemento' />
+          <span>Opcional</span>
           <CepNumberNeighborInput placeholder='Bairro' />
           <CityInput placeholder='Cidade' />
           <FederativeUnitInput placeholder='UF' />

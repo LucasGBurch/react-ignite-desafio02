@@ -46,6 +46,17 @@ export const CompleteOrderContainer = styled.section`
     div:last-child {
       display: flex;
       flex-wrap: wrap;
+
+      span {
+        color: ${(props) => props.theme['base-label']};
+        height: 0;
+        width: 0;
+        position: relative;
+        top: 0.75rem;
+        right: 4rem;
+        font-size: 0.875rem;
+        font-style: italic;
+      }
     }
   }
 

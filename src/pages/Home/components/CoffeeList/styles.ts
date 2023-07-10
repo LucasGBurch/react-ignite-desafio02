@@ -8,7 +8,7 @@ export const CoffeeListContainer = styled.section`
     display: grid;
     grid-template-columns: repeat(4, 25%);
     grid-template-rows: repeat(4, 25%);
-    gap: 2.5rem 2rem;
+    gap: 1.5rem 0;
   }
 
   h2 {

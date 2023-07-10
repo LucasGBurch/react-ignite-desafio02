@@ -100,7 +100,6 @@ export const SuccessContainer = styled.main`
 
     #TimerSuccess {
       background: ${(props) => props.theme.yellow};
-      padding: 0.7rem;
     }
 
     #CurrencyDollarSuccess {
