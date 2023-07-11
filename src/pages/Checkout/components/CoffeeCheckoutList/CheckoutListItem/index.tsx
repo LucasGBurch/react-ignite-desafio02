@@ -24,20 +24,20 @@ export function CheckoutListItem({
       <section>
         <div>
           <p>{name}</p>
-          <span>R$ {price}</span>
+          <span>R$ {price.toFixed(2).replace('.', ',')}</span>
         </div>
         <div>
-          <button onClick={minusOneCoffeeHandler}>
-            <Minus size={14} weight='bold' id='ListItemMinus' />
-          </button>
-          <span>{'quantidade'}</span>
-          <button onClick={PlusOneCoffeeHandler}>
-            <Plus size={14} weight='bold' id='ListItemPlus' />
-          </button>
-        </div>
-        <div>
+          <div>
+            <button onClick={minusOneCoffeeHandler}>
+              <Minus size={14} weight='bold' id='ListItemMinus' />
+            </button>
+            <span>{1}</span>
+            <button onClick={PlusOneCoffeeHandler}>
+              <Plus size={14} weight='bold' id='ListItemPlus' />
+            </button>
+          </div>
           <button onClick={removeCoffeeFromListHandler}>
-            Remover <Trash size={16} />
+            <Trash size={16} /> REMOVER
           </button>
         </div>
       </section>
