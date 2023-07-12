@@ -34,9 +34,9 @@ export function Success() {
           <li>
             <CurrencyDollar id='CurrencyDollarSuccess' size={32} />
             <div>
-              <span>Previsão de entrega</span>
+              <span>Pagamento na entrega</span>
               <span>
-                <strong>20 min - 30 min</strong>
+                <strong>Cartão de Crédito</strong>
               </span>
             </div>
           </li>

@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 import * as RadioGroup from '@radix-ui/react-radio-group';
 
-export const CompleteOrderContainer = styled.section`
+export const CompleteOrderFormContainer = styled.section`
   height: 40rem;
   width: 40rem;
 

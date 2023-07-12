@@ -1,4 +1,4 @@
-import { CompleteOrder } from './components/CompleteOrder';
+import { CompleteOrderForm } from './components/CompleteOrderForm';
 import { SelectedCoffees } from './components/SelectedCoffees';
 import { CheckoutContainer } from './styles';
 
@@ -7,7 +7,7 @@ export function Checkout() {
     <CheckoutContainer>
       <section>
         <h2>Complete seu pedido</h2>
-        <CompleteOrder />
+        <CompleteOrderForm />
       </section>
       <section>
         <h2>Cafés selecionados</h2>
