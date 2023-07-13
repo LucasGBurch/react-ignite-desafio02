@@ -5,11 +5,9 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as zod from 'zod';
 
 import {
-  CepNumberNeighborInput,
+  CepNumberNeighborhoodInput,
   CityInput,
   ComplementInput,
   CompleteOrderFormContainer,
@@ -19,48 +17,21 @@ import {
   StreetInput,
 } from './styles';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-
-const newAddressFormValidationSchema = zod.object({
-  CEP: zod.string(),
-  Rua: zod.string().min(5, 'Informe um nome de rua válido.'),
-  Numero: zod
-    .string()
-    .min(1, 'Informe um número de endereço válido')
-    .max(10000, 'Informe um número de endereço válido'),
-  Bairro: zod.string().min(5, 'Informe um nome de bairro válido.'),
-  Cidade: zod.string().min(2, 'Informe um nome válido de cidade'),
-  Estado: zod
-    .string()
-    .min(2, 'Informe uma UF válida.')
-    .max(2, 'Informe uma UF válida.'),
-});
-
-type NewAddressFormData = zod.infer<typeof newAddressFormValidationSchema>;
+import { useFormContext } from 'react-hook-form';
 
 export function CompleteOrderForm() {
-  const { register } = useForm();
+  const { register } = useFormContext();
 
 
-  const [paymentType, setPaymentType] = useState<string>('');
+  const [paymentType, setPaymentType] = useState<string>('credit');
 
   function paymentTypesHandler(event: React.FormEvent<HTMLButtonElement>) {
     setPaymentType(event.currentTarget.value);
   }
 
-  const newAddressForm = useForm<NewAddressFormData>({
-    resolver: zodResolver(newAddressFormValidationSchema),
-  });
-
-  const { handleSubmit, watch, reset } = newAddressForm;
-
-  function handleFinishOrder() {
-    
-  }
-
   return (
     <CompleteOrderFormContainer>
-      <form onSubmit={handleSubmit(handleFinishOrder)}>
+      <section>
         <div>
           <MapPinLine id='MapPinCheckout' size={22} />
           <div>
@@ -69,7 +40,7 @@ export function CompleteOrderForm() {
           </div>
         </div>
         <div>
-          <CepNumberNeighborInput
+          <CepNumberNeighborhoodInput
             id='CEP'
             placeholder='CEP'
             type='text'
@@ -78,7 +49,7 @@ export function CompleteOrderForm() {
             {...register('CEP', { pattern: /(\d{2}[.]?\d{3})[-]?(\d{3})/ })}
           />
           <StreetInput id='Rua' placeholder='Rua' type='text' minLength={5} />
-          <CepNumberNeighborInput
+          <CepNumberNeighborhoodInput
             id='Numero'
             placeholder='Numero'
             type='number'
@@ -88,7 +59,7 @@ export function CompleteOrderForm() {
           />
           <ComplementInput placeholder='Complemento' />
           <span>Opcional</span>
-          <CepNumberNeighborInput
+          <CepNumberNeighborhoodInput
             id='Bairro'
             placeholder='Bairro'
             type='text'
@@ -111,7 +82,7 @@ export function CompleteOrderForm() {
             {...register('Estado')}
           />
         </div>
-      </form>
+      </section>
       <section>
         <div>
           <CurrencyDollar id='CurrencyDollarCheckout' size={22} />

@@ -84,6 +84,11 @@ export const SuccessContainer = styled.main`
           display: flex;
           flex-direction: column;
           gap: 0.25rem;
+
+          span {
+            line-height: 1.25rem;
+            max-width: 26rem;
+          }
         }
       }
     }

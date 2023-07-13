@@ -1,8 +1,14 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react';
 import successImg from '../../assets/SuccessImg.svg';
 import { SuccessContainer } from './styles';
+import { useContext } from 'react';
+import { ClientContext } from '../../contexts/clientContext';
 
 export function Success() {
+  const { client } = useContext(ClientContext);
+
+  const paymentTypeText = client?.Payment === 'credit' ? 'Cartão de Crédito' : client?.Payment
+
   return (
     <SuccessContainer>
       <section>
@@ -17,9 +23,18 @@ export function Success() {
             <MapPin id='MapPinSuccess' size={32} weight='fill' />
             <div>
               <span>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                Entrega em{' '}
+                <strong>
+                  {client
+                    ? `Rua ${client.Street}, ${client.Number}`
+                    : 'Rua dos Dados Estáticos João Daniel Martinelli, 102'}
+                </strong>
               </span>
-              <span>Farrapos - Porto Alegre, RS</span>
+              <span>
+                {client
+                  ? `${client.Neighborhood} - ${client.City}, ${client.FederativeUnit}`
+                  : 'Farrapos - Porto Alegre, RS'}
+              </span>
             </div>
           </li>
           <li>
@@ -36,7 +51,7 @@ export function Success() {
             <div>
               <span>Pagamento na entrega</span>
               <span>
-                <strong>Cartão de Crédito</strong>
+                <strong>{client ? paymentTypeText : 'Cartão de Dados Estáticos'}</strong>
               </span>
             </div>
           </li>

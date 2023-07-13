@@ -9,7 +9,7 @@ export const CompleteOrderFormContainer = styled.section`
   flex-direction: column;
   gap: 0.75rem;
 
-  form {
+  section:first-child {
     background-color: ${(props) => props.theme['base-card']};
     border-radius: 6px;
 
@@ -60,7 +60,7 @@ export const CompleteOrderFormContainer = styled.section`
     }
   }
 
-  section {
+  section:last-child {
     background-color: ${(props) => props.theme['base-card']};
     height: 13rem;
 
@@ -122,7 +122,7 @@ export const BaseFormInput = styled.input`
   }
 `;
 
-export const CepNumberNeighborInput = styled(BaseFormInput)`
+export const CepNumberNeighborhoodInput = styled(BaseFormInput)`
   margin-right: 0.75rem;
 `;
 

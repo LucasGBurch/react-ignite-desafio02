@@ -4,14 +4,17 @@ import { Router } from './Router';
 
 import { GlobalStyle } from './styles/theme/global';
 import { defaultTheme } from './styles/theme/default';
+import { ClientProvider } from './contexts/clientContext';
 
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
       <GlobalStyle />
+      <BrowserRouter>
+        <ClientProvider>
+          <Router />
+        </ClientProvider>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
