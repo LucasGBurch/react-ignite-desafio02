@@ -5,9 +5,17 @@ import { useContext } from 'react';
 import { ClientContext } from '../../contexts/clientContext';
 
 export function Success() {
-  const { client } = useContext(ClientContext);
+  const { client, paymentType } = useContext(ClientContext);
+  console.log(client)
 
-  const paymentTypeText = client?.Payment === 'credit' ? 'Cartão de Crédito' : client?.Payment
+  const paymentTypeText =
+    paymentType === 'credit'
+      ? 'Cartão de Crédito'
+      : paymentType === 'debit'
+      ? 'Cartão de Débito'
+      : paymentType === 'cash'
+      ? 'Dinheiro'
+      : 'Forma de pagamento';
 
   return (
     <SuccessContainer>
@@ -26,7 +34,7 @@ export function Success() {
                 Entrega em{' '}
                 <strong>
                   {client
-                    ? `Rua ${client.Street}, ${client.Number}`
+                    ? `${client.Street}, ${client.Number}`
                     : 'Rua dos Dados Estáticos João Daniel Martinelli, 102'}
                 </strong>
               </span>
@@ -51,7 +59,9 @@ export function Success() {
             <div>
               <span>Pagamento na entrega</span>
               <span>
-                <strong>{client ? paymentTypeText : 'Cartão de Dados Estáticos'}</strong>
+                <strong>
+                  {paymentType ? paymentTypeText : 'Cartão de Dados Estáticos'}
+                </strong>
               </span>
             </div>
           </li>

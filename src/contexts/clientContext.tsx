@@ -1,19 +1,11 @@
 import { createContext, ReactNode, useState } from 'react';
-
-interface Client {
-  CEP: string;
-  Street: string;
-  Number: number;
-  Neighborhood: string;
-  City: string;
-  FederativeUnit: string;
-  Payment: string;
-  Complement?: string;
-}
+import { NewAddressFormData } from '../@types';
 
 interface ClientContextType {
-  client: Client | undefined;
-  clientSetter: (clientValues: Client) => void;
+  client: NewAddressFormData | undefined;
+  clientSetter: (clientValues: NewAddressFormData) => void;
+  paymentType: string;
+  paymentTypeSetter: (paymentType: string) => void;
 }
 
 export const ClientContext = createContext({} as ClientContextType);
@@ -23,9 +15,10 @@ interface ClientProviderProps {
 }
 
 export function ClientProvider({ children }: ClientProviderProps) {
-  const [client, setClient] = useState<Client>();
+  const [client, setClient] = useState<NewAddressFormData>();
+  const [paymentType, setPaymentType] = useState<string>('credit');
 
-  function clientSetterHandler(clientValues: Client) {
+  function clientSetterHandler(clientValues: NewAddressFormData) {
     setClient((prevState) => {
       return clientValues;
     });
@@ -34,6 +27,8 @@ export function ClientProvider({ children }: ClientProviderProps) {
   const clientContextValues: ClientContextType = {
     client: client,
     clientSetter: clientSetterHandler,
+    paymentType: paymentType,
+    paymentTypeSetter: setPaymentType,
   };
 
   return (

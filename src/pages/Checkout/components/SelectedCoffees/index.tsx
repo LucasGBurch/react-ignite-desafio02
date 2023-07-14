@@ -1,20 +1,12 @@
-import { useNavigate } from 'react-router-dom';
 import { ConfirmOrderButton, SelectedCoffeesContainer } from './styles';
 import { CheckoutList } from '../CoffeeCheckoutList';
 
 export function SelectedCoffees() {
 
-  const navigate = useNavigate();
-
   const deliverValueNumber = 3.51;
   const deliverValue = String(deliverValueNumber).replace('.', ',');
   const itemsTotal = 0
   const finalTotal = String(itemsTotal + deliverValueNumber).replace('.', ',');
-
-  function confirmOrderHandler() {
-
-    navigate('/success');
-  }
 
   return (
     <SelectedCoffeesContainer>
@@ -33,7 +25,7 @@ export function SelectedCoffees() {
           <span>R$ {finalTotal}</span>
         </h3>
       </section>
-      <ConfirmOrderButton onClick={confirmOrderHandler}>
+      <ConfirmOrderButton type='submit'>
         Confirmar Pedido
       </ConfirmOrderButton>
     </SelectedCoffeesContainer>

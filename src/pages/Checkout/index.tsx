@@ -1,31 +1,21 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as zod from 'zod';
-import { useForm, FormProvider } from 'react-hook-form';
+import { useForm, FormProvider, useFormState } from 'react-hook-form';
 
 import { CompleteOrderForm } from './components/CompleteOrderForm';
 import { SelectedCoffees } from './components/SelectedCoffees';
 
 import { CheckoutContainer } from './styles';
-
-const newAddressFormValidationSchema = zod.object({
-  CEP: zod.string(),
-  Rua: zod.string().min(5, 'Informe um nome de rua válido.'),
-  Numero: zod
-    .string()
-    .min(1, 'Informe um número de endereço válido')
-    .max(10000, 'Informe um número de endereço válido'),
-  Bairro: zod.string().min(5, 'Informe um nome de bairro válido.'),
-  Cidade: zod.string().min(2, 'Informe um nome válido de cidade'),
-  Estado: zod
-    .string()
-    .min(2, 'Informe uma UF válida.')
-    .max(2, 'Informe uma UF válida.'),
-});
-
-type NewAddressFormData = zod.infer<typeof newAddressFormValidationSchema>;
+import { useContext } from 'react';
+import { ClientContext } from '../../contexts/clientContext';
+import {
+  NewAddressFormData,
+  newAddressFormValidationSchema,
+} from '../../@types';
+import { useNavigate } from 'react-router-dom';
 
 export function Checkout() {
-
+  const { clientSetter } = useContext(ClientContext);
+  const navigate = useNavigate();
 
   const newAddressForm = useForm<NewAddressFormData>({
     resolver: zodResolver(newAddressFormValidationSchema),
@@ -33,12 +23,19 @@ export function Checkout() {
 
   const { handleSubmit, watch, reset } = newAddressForm;
 
-  function handleFinishOrder() {
-
+  function handleFinishOrder(clientData: NewAddressFormData) {
+    clientSetter(clientData);
+    console.log(clientData);
+    
+    reset();
+    navigate('/success');
   }
 
+  // const rua = watch('Street');
+  // console.log(rua);
+
   return (
-    <CheckoutContainer onSubmit={handleFinishOrder}>
+    <CheckoutContainer onSubmit={handleSubmit(handleFinishOrder)}>
       <section>
         <h2>Complete seu pedido</h2>
         <FormProvider {...newAddressForm}>

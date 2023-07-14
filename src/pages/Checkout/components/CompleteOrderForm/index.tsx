@@ -16,17 +16,16 @@ import {
   PaymentTypeButton,
   StreetInput,
 } from './styles';
-import { useState } from 'react';
+import { useContext } from 'react';
 import { useFormContext } from 'react-hook-form';
+import { ClientContext } from '../../../../contexts/clientContext';
 
 export function CompleteOrderForm() {
   const { register } = useFormContext();
-
-
-  const [paymentType, setPaymentType] = useState<string>('credit');
+  const { paymentType, paymentTypeSetter } = useContext(ClientContext);
 
   function paymentTypesHandler(event: React.FormEvent<HTMLButtonElement>) {
-    setPaymentType(event.currentTarget.value);
+    paymentTypeSetter(event.currentTarget.value);
   }
 
   return (
@@ -48,38 +47,44 @@ export function CompleteOrderForm() {
             maxLength={10} /*com ponto e traço*/
             {...register('CEP', { pattern: /(\d{2}[.]?\d{3})[-]?(\d{3})/ })}
           />
-          <StreetInput id='Rua' placeholder='Rua' type='text' minLength={5} />
+          <StreetInput
+            id='Street'
+            placeholder='Rua'
+            type='text'
+            minLength={5}
+            {...register('Street')}
+          />
           <CepNumberNeighborhoodInput
-            id='Numero'
+            id='Number'
             placeholder='Numero'
             type='number'
             min={1}
             max={10000}
-            {...register('Numero', { valueAsNumber: true })}
+            {...register('Number', { valueAsNumber: true })}
           />
-          <ComplementInput placeholder='Complemento' />
+          <ComplementInput id='Complement' placeholder='Complemento' />
           <span>Opcional</span>
           <CepNumberNeighborhoodInput
-            id='Bairro'
+            id='Neighborhood'
             placeholder='Bairro'
             type='text'
             minLength={3}
-            {...register('Bairro')}
+            {...register('Neighborhood')}
           />
           <CityInput
-            id='Cidade'
+            id='City'
             placeholder='Cidade'
             type='text'
             minLength={3}
-            {...register('Cidade')}
+            {...register('City')}
           />
           <FederativeUnitInput
-            id='Estado'
+            id='FederativeUnit'
             placeholder='UF'
             type='text'
             minLength={2}
             maxLength={2}
-            {...register('Estado')}
+            {...register('FederativeUnit')}
           />
         </div>
       </section>

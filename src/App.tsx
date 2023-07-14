@@ -5,15 +5,18 @@ import { Router } from './Router';
 import { GlobalStyle } from './styles/theme/global';
 import { defaultTheme } from './styles/theme/default';
 import { ClientProvider } from './contexts/clientContext';
+import { CoffeeProvider } from './contexts/coffeesContext';
 
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
       <BrowserRouter>
-        <ClientProvider>
-          <Router />
-        </ClientProvider>
+        <CoffeeProvider>
+          <ClientProvider>
+            <Router />
+          </ClientProvider>
+        </CoffeeProvider>
       </BrowserRouter>
     </ThemeProvider>
   );
