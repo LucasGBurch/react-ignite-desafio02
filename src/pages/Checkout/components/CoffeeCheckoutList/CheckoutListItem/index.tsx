@@ -1,16 +1,15 @@
 import { Minus, Plus, Trash } from 'phosphor-react';
 import { CheckoutListItemContainer } from './styles';
+import { Coffee } from '../../../../../@types';
 
-interface CheckoutListItemProps {
-  name: string;
-  price: number;
-  coffeeImg: string;
+interface CheckoutListItemProps extends Coffee {
 }
 
 export function CheckoutListItem({
   name,
   price,
   coffeeImg,
+  isActive,
 }: CheckoutListItemProps) {
   function minusOneCoffeeHandler() {}
 

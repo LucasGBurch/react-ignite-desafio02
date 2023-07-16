@@ -20,3 +20,15 @@ export type NewAddressFormData = zod.infer<
   typeof newAddressFormValidationSchema
 >;
 
+export interface Coffee {
+  name: string;
+  description: string;
+  price: number;
+  coffeeImg: string;
+  tipo1: string;
+  tipo2?: string;
+  tipo3?: string;
+  isActive: boolean;
+  quantity: number;
+}
+

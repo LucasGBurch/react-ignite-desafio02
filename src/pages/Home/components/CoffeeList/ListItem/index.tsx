@@ -1,15 +1,14 @@
 import { Minus, Plus, ShoppingCart } from 'phosphor-react';
 import { ListItemContainer } from './styles';
-import { useState } from 'react';
-
-// import coffeimg from '../../../../../assets/'
-// teste do caminho para colocar no objeto json das imagens
+import { useContext, useState } from 'react';
+import { CoffeeContext } from '../../../../../contexts/coffeesContext';
 
 interface ListItemProps {
   name: string;
   description: string;
   price: number;
   coffeeImg: string;
+  isActive: boolean;
   tipo1: string;
   tipo2?: string;
   tipo3?: string;
@@ -20,6 +19,7 @@ export function ListItem({
   description,
   price,
   coffeeImg,
+  isActive,
   tipo1,
   tipo2,
   tipo3,
@@ -29,6 +29,8 @@ export function ListItem({
   const priceAmount = (price * coffeeQuantity).toFixed(2);
 
   const valueFormatted = String(priceAmount).replace('.', ',');
+
+  const { coffeeSetter } = useContext(CoffeeContext);
 
   function minusOneCoffeeHandler() {
     if (coffeeQuantity > 0) {
@@ -42,7 +44,7 @@ export function ListItem({
     }
   }
 
-  function addToTheCartHandler() {
+  function activeToTheCartHandler() {
     
   }
 
@@ -71,7 +73,7 @@ export function ListItem({
           </button>
         </div>
         <div>
-          <button onClick={addToTheCartHandler}>
+          <button onClick={activeToTheCartHandler}>
             <ShoppingCart id='ListItemCart' size={22} weight='fill' />
           </button>
         </div>

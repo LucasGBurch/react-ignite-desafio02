@@ -1,8 +1,11 @@
+import { useContext } from 'react';
 import { ListItem } from './ListItem';
 import { CoffeeListContainer } from './styles';
-import { coffees } from '../../../../coffees.json';
+import { CoffeeContext } from '../../../../contexts/coffeesContext';
 
 export function CoffeeList() {
+  const { coffees } = useContext(CoffeeContext);
+
   return (
     <CoffeeListContainer>
       <h2>Nossos cafés</h2>
@@ -17,6 +20,7 @@ export function CoffeeList() {
               tipo1={coffee.tipo1}
               tipo2={coffee.tipo2}
               tipo3={coffee.tipo3}
+              isActive={coffee.isActive}
             />
           ))}
         </ul>

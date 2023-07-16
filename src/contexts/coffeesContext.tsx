@@ -1,19 +1,11 @@
 import { createContext, ReactNode, useState } from 'react';
-
-interface Coffee {
-  name: string;
-  description: string;
-  price: number;
-  quantity: number;
-  coffeeImg: string;
-  tipo1: string;
-  tipo2?: string;
-  tipo3?: string;
-}
+import { coffees as coffeesData } from '../coffees.json';
+import { Coffee } from '../@types';
 
 interface CoffeeContextType {
-  coffee: Coffee | undefined;
-  coffeeSetter: (coffeeValues: Coffee) => void;
+  coffees: Coffee[] | undefined;
+  coffeeSetter: (coffeeName: string, coffeeIsActive: boolean) => void;
+  coffeeCartSetter: (coffeeValues: Coffee[]) => void;
 }
 
 export const CoffeeContext = createContext({} as CoffeeContextType);
@@ -23,17 +15,35 @@ interface CoffeeProviderProps {
 }
 
 export function CoffeeProvider({ children }: CoffeeProviderProps) {
-  const [coffee, setCoffee] = useState<Coffee>();
+  const [coffees, setCoffees] = useState<Coffee[]>([
+    ...coffeesData.map((coffee) => {
+      // Pegando os dados iniciais do json:
+      return { isActive: false, quantity: 0, ...coffee };
+    }),
+  ]);
+  const [cartCoffees, setCartCoffees] = useState<number>(0);
 
-  function coffeeSetterHandler(coffeeValues: Coffee) {
-    setCoffee((prevState) => {
-      return coffeeValues;
+  function coffeeSetterHandler(coffeeName: string, coffeeIsActive: boolean) {
+    // Usando o setter dos cafés para atualizar os ativos para a página Checkout:
+    setCoffees((prevCoffeesState) => {
+      const updatedcoffees = prevCoffeesState.map((coffee) => {
+        if (coffee.name === coffeeName) {
+          return { ...coffee, isActive: coffeeIsActive };
+        } else {
+          return { ...coffee };
+        }
+      });
+
+      return updatedcoffees;
     });
   }
 
+  function coffeeCartSetterHandler(coffeeValues: Coffee[]) {}
+
   const coffeeContextValues: CoffeeContextType = {
-    coffee: coffee,
+    coffees: coffees,
     coffeeSetter: coffeeSetterHandler,
+    coffeeCartSetter: coffeeCartSetterHandler,
   };
 
   return (
