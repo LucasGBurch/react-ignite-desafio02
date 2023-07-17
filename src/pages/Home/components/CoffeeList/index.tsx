@@ -21,6 +21,7 @@ export function CoffeeList() {
               tipo2={coffee.tipo2}
               tipo3={coffee.tipo3}
               isActive={coffee.isActive}
+              quantity={coffee.quantity}
             />
           ))}
         </ul>

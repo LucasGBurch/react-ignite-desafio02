@@ -7,6 +7,7 @@ export const HeaderContainer = styled.header`
 
   height: 6.5rem;
   max-width: 90rem;
+  width: 100%;
   padding: 2rem 10rem;
 
   position: sticky; // ISTO AQUI FAZ O HEADER

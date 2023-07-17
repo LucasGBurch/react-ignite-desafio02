@@ -1,5 +1,5 @@
 import { Minus, Plus, ShoppingCart } from 'phosphor-react';
-import { ListItemContainer } from './styles';
+import { CartButton, ListItemContainer } from './styles';
 import { useContext, useState } from 'react';
 import { CoffeeContext } from '../../../../../contexts/coffeesContext';
 
@@ -9,6 +9,7 @@ interface ListItemProps {
   price: number;
   coffeeImg: string;
   isActive: boolean;
+  quantity: number;
   tipo1: string;
   tipo2?: string;
   tipo3?: string;
@@ -20,32 +21,35 @@ export function ListItem({
   price,
   coffeeImg,
   isActive,
+  quantity,
   tipo1,
   tipo2,
   tipo3,
 }: ListItemProps) {
-  const [coffeeQuantity, setCoffeeQuantity] = useState<number>(0);
+  const [coffeeQuantity, setCoffeeQuantity] = useState<number>(quantity);
 
   const priceAmount = (price * coffeeQuantity).toFixed(2);
 
   const valueFormatted = String(priceAmount).replace('.', ',');
 
-  const { coffeeSetter } = useContext(CoffeeContext);
+  const { setCoffeeActive, coffeeQuantitySetter } = useContext(CoffeeContext);
 
   function minusOneCoffeeHandler() {
     if (coffeeQuantity > 0) {
       setCoffeeQuantity((prevQuantity) => prevQuantity - 1);
+      coffeeQuantitySetter(name, coffeeQuantity);
     }
   }
 
   function PlusOneCoffeeHandler() {
     if (coffeeQuantity < 9) {
       setCoffeeQuantity((prevQuantity) => prevQuantity + 1);
+      coffeeQuantitySetter(name, coffeeQuantity);
     }
   }
 
   function activeToTheCartHandler() {
-    
+    setCoffeeActive(name);
   }
 
   return (
@@ -73,9 +77,12 @@ export function ListItem({
           </button>
         </div>
         <div>
-          <button onClick={activeToTheCartHandler}>
+          <CartButton
+            enableCart={`${isActive ? 'enabled' : 'disabled'}`}
+            onClick={activeToTheCartHandler}
+          >
             <ShoppingCart id='ListItemCart' size={22} weight='fill' />
-          </button>
+          </CartButton>
         </div>
       </section>
     </ListItemContainer>

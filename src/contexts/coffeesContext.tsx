@@ -4,8 +4,8 @@ import { Coffee } from '../@types';
 
 interface CoffeeContextType {
   coffees: Coffee[] | undefined;
-  coffeeSetter: (coffeeName: string, coffeeIsActive: boolean) => void;
-  coffeeCartSetter: (coffeeValues: Coffee[]) => void;
+  setCoffeeActive: (coffeeName: string) => void;
+  coffeeQuantitySetter: (coffeeName: string, newQuantity: number) => void;
 }
 
 export const CoffeeContext = createContext({} as CoffeeContextType);
@@ -21,14 +21,28 @@ export function CoffeeProvider({ children }: CoffeeProviderProps) {
       return { isActive: false, quantity: 0, ...coffee };
     }),
   ]);
-  const [cartCoffees, setCartCoffees] = useState<number>(0);
+  
+  function coffeeQuantitySetterHandler(coffeeName: string, newQuantity: number) {
+    // Usando o setter dos cafés para atualizar a quantidade para o café:
+    setCoffees((prevCoffeesState) => {
+      const updatedcoffees = prevCoffeesState.map((coffee) => {
+        if (coffee.name === coffeeName) {
+          return { ...coffee, quantity: newQuantity };
+        } else {
+          return { ...coffee };
+        }
+      });
+      console.log(newQuantity)
+      return updatedcoffees;
+    });
+  }
 
-  function coffeeSetterHandler(coffeeName: string, coffeeIsActive: boolean) {
+  function setCoffeeActiveHandler(coffeeName: string) {
     // Usando o setter dos cafés para atualizar os ativos para a página Checkout:
     setCoffees((prevCoffeesState) => {
       const updatedcoffees = prevCoffeesState.map((coffee) => {
         if (coffee.name === coffeeName) {
-          return { ...coffee, isActive: coffeeIsActive };
+          return { ...coffee, isActive: !coffee.isActive };
         } else {
           return { ...coffee };
         }
@@ -38,12 +52,10 @@ export function CoffeeProvider({ children }: CoffeeProviderProps) {
     });
   }
 
-  function coffeeCartSetterHandler(coffeeValues: Coffee[]) {}
-
   const coffeeContextValues: CoffeeContextType = {
     coffees: coffees,
-    coffeeSetter: coffeeSetterHandler,
-    coffeeCartSetter: coffeeCartSetterHandler,
+    setCoffeeActive: setCoffeeActiveHandler,
+    coffeeQuantitySetter: coffeeQuantitySetterHandler,
   };
 
   return (

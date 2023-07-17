@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ListItemContainer = styled.li`
   display: flex;
@@ -100,21 +100,6 @@ export const ListItemContainer = styled.li`
 
     div:last-child {
       width: 2.375rem;
-
-      button {
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: ${(props) => props.theme['purple-dark']};
-        border-radius: 6px;
-        height: 2.375rem;
-        width: 2.375rem;
-        
-        &:hover {
-          background-color: ${(props) => props.theme.purple};
-        }
-      }
     }
   }
 
@@ -129,4 +114,33 @@ export const ListItemContainer = styled.li`
   #ListItemPlus {
     color: ${(props) => props.theme['purple-dark']};
   }
+`;
+
+interface CartButtonProps {
+  enableCart?: 'enabled' | 'disabled';
+}
+
+export const CartButton = styled.button<CartButtonProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props) => props.theme['purple-dark']};
+  border-radius: 6px;
+  height: 2.375rem;
+  width: 2.375rem;
+
+  &:hover {
+    background-color: ${(props) => props.theme.purple};
+    ${(props) =>
+      props.enableCart === 'enabled' &&
+      css`
+        background-color: ${props.theme.yellow};
+      `}
+  }
+
+  ${(props) =>
+    props.enableCart === 'enabled' &&
+    css`
+      background-color: ${props.theme['yellow-dark']};
+    `}
 `;
