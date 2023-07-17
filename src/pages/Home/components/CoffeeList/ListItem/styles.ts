@@ -117,7 +117,7 @@ export const ListItemContainer = styled.li`
 `;
 
 interface CartButtonProps {
-  enableCart?: 'enabled' | 'disabled';
+  enablecart: 'enabled' | 'disabled';
 }
 
 export const CartButton = styled.button<CartButtonProps>`
@@ -132,14 +132,14 @@ export const CartButton = styled.button<CartButtonProps>`
   &:hover {
     background-color: ${(props) => props.theme.purple};
     ${(props) =>
-      props.enableCart === 'enabled' &&
+      props.enablecart === 'enabled' &&
       css`
         background-color: ${props.theme.yellow};
       `}
   }
 
   ${(props) =>
-    props.enableCart === 'enabled' &&
+    props.enablecart === 'enabled' &&
     css`
       background-color: ${props.theme['yellow-dark']};
     `}

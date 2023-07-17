@@ -1,7 +1,9 @@
 import { Minus, Plus, ShoppingCart } from 'phosphor-react';
 import { CartButton, ListItemContainer } from './styles';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CoffeeContext } from '../../../../../contexts/coffeesContext';
+import { StyleSheetManager } from 'styled-components';
+import isPropValid from '@emotion/is-prop-valid';
 
 interface ListItemProps {
   name: string;
@@ -29,10 +31,14 @@ export function ListItem({
   const [coffeeQuantity, setCoffeeQuantity] = useState<number>(quantity);
 
   const priceAmount = (price * coffeeQuantity).toFixed(2);
-
   const valueFormatted = String(priceAmount).replace('.', ',');
 
   const { setCoffeeActive, coffeeQuantitySetter } = useContext(CoffeeContext);
+
+  // Era este useEffect que faltava para ajustar a quantidade total no Header evitando o efeito colateral assíncrono do state:
+  useEffect(() => {
+    coffeeQuantitySetter(name, coffeeQuantity);
+  }, [coffeeQuantity]);
 
   function minusOneCoffeeHandler() {
     if (coffeeQuantity > 0) {
@@ -77,12 +83,14 @@ export function ListItem({
           </button>
         </div>
         <div>
-          <CartButton
-            enableCart={`${isActive ? 'enabled' : 'disabled'}`}
-            onClick={activeToTheCartHandler}
-          >
-            <ShoppingCart id='ListItemCart' size={22} weight='fill' />
-          </CartButton>
+          <StyleSheetManager shouldForwardProp={isPropValid}>
+            <CartButton
+              enablecart={`${isActive ? 'enabled' : 'disabled'}`}
+              onClick={activeToTheCartHandler}
+            >
+              <ShoppingCart id='ListItemCart' size={22} weight='fill' />
+            </CartButton>
+          </StyleSheetManager>
         </div>
       </section>
     </ListItemContainer>

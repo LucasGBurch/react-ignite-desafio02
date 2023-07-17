@@ -21,7 +21,7 @@ export function CoffeeProvider({ children }: CoffeeProviderProps) {
       return { isActive: false, quantity: 0, ...coffee };
     }),
   ]);
-  
+
   function coffeeQuantitySetterHandler(coffeeName: string, newQuantity: number) {
     // Usando o setter dos cafés para atualizar a quantidade para o café:
     setCoffees((prevCoffeesState) => {
@@ -32,7 +32,7 @@ export function CoffeeProvider({ children }: CoffeeProviderProps) {
           return { ...coffee };
         }
       });
-      console.log(newQuantity)
+      // console.log(newQuantity);
       return updatedcoffees;
     });
   }
