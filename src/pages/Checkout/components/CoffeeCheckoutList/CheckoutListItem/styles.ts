@@ -9,7 +9,6 @@ export const CheckoutListItemContainer = styled.li`
   justify-content: center;
   gap: 1.25rem;
 
-  margin: 1.5rem auto;
 
   &:first-child {
     margin-top: 0;
@@ -23,9 +22,7 @@ export const CheckoutListItemContainer = styled.li`
   section {
     display: flex;
     justify-content: flex-start;
-    gap: 0.5rem;
-
-    padding: 0.5rem 0;
+    gap: 0.25rem;
 
     div:first-child {
       display: flex;
@@ -63,7 +60,6 @@ export const CheckoutListItemContainer = styled.li`
           color: ${(props) => props.theme['base-title']};
           font-family: 'Roboto', sans-serif;
           font-size: 1rem;
-          font-weight: bold;
           padding: 0;
           height: 1.25rem;
           width: 1.5rem;

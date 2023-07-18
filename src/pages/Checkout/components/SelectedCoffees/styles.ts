@@ -7,6 +7,27 @@ export const SelectedCoffeesContainer = styled.section`
   background-color: ${props => props.theme["base-card"]};
   padding: 2.5rem;
 
+  p {
+    line-height: 160%;
+    text-align: center;
+
+    a {
+      border-radius: 6px;
+      text-decoration: none;
+      color: ${props => props.theme["purple-dark"]};
+      background-color: ${props => props.theme["purple-light"]};
+      padding: 0.25rem;
+
+      &:visited {
+        text-decoration: none;
+      }
+      &:active {
+        background-color: ${props => props.theme["yellow-light"]};
+        color: ${props => props.theme.yellow};
+      }
+    }
+  }
+
   section {
     height: 5.75rem;
     width: 23rem;

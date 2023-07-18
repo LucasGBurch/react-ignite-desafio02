@@ -4,18 +4,9 @@ import { useContext, useEffect, useState } from 'react';
 import { CoffeeContext } from '../../../../../contexts/coffeesContext';
 import { StyleSheetManager } from 'styled-components';
 import isPropValid from '@emotion/is-prop-valid';
+import { Coffee } from '../../../../../@types';
 
-interface ListItemProps {
-  name: string;
-  description: string;
-  price: number;
-  coffeeImg: string;
-  isActive: boolean;
-  quantity: number;
-  tipo1: string;
-  tipo2?: string;
-  tipo3?: string;
-}
+interface ListItemProps extends Coffee {}
 
 export function ListItem({
   name,
@@ -30,10 +21,10 @@ export function ListItem({
 }: ListItemProps) {
   const [coffeeQuantity, setCoffeeQuantity] = useState<number>(quantity);
 
+  const { setCoffeeActive, coffeeQuantitySetter } = useContext(CoffeeContext);
+
   const priceAmount = (price * coffeeQuantity).toFixed(2);
   const valueFormatted = String(priceAmount).replace('.', ',');
-
-  const { setCoffeeActive, coffeeQuantitySetter } = useContext(CoffeeContext);
 
   // Era este useEffect que faltava para ajustar a quantidade total no Header evitando o efeito colateral assíncrono do state:
   useEffect(() => {

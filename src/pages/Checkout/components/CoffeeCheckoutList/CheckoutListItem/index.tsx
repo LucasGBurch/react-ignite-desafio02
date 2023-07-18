@@ -1,21 +1,46 @@
 import { Minus, Plus, Trash } from 'phosphor-react';
 import { CheckoutListItemContainer } from './styles';
 import { Coffee } from '../../../../../@types';
+import { useContext, useEffect, useState } from 'react';
+import { CoffeeContext } from '../../../../../contexts/coffeesContext';
 
-interface CheckoutListItemProps extends Coffee {
-}
+interface CheckoutListItemProps extends Coffee {}
 
 export function CheckoutListItem({
   name,
   price,
   coffeeImg,
-  isActive,
+  quantity,
 }: CheckoutListItemProps) {
-  function minusOneCoffeeHandler() {}
+  const [coffeeQuantity, setCoffeeQuantity] = useState<number>(quantity);
 
-  function PlusOneCoffeeHandler() {}
+  const { setCoffeeActive, coffeeQuantitySetter } = useContext(CoffeeContext);
 
-  function removeCoffeeFromListHandler() {}
+  const priceAmount = (price * coffeeQuantity).toFixed(2);
+  const valueFormatted = String(priceAmount).replace('.', ',');
+
+  // Era este useEffect que faltava para ajustar a quantidade total no Header evitando o efeito colateral assíncrono do state:
+  useEffect(() => {
+    coffeeQuantitySetter(name, coffeeQuantity);
+  }, [coffeeQuantity]);
+
+  function minusOneCoffeeHandler() {
+    if (coffeeQuantity > 0) {
+      setCoffeeQuantity((prevQuantity) => prevQuantity - 1);
+      coffeeQuantitySetter(name, coffeeQuantity);
+    }
+  }
+
+  function PlusOneCoffeeHandler() {
+    if (coffeeQuantity < 9) {
+      setCoffeeQuantity((prevQuantity) => prevQuantity + 1);
+      coffeeQuantitySetter(name, coffeeQuantity);
+    }
+  }
+
+  function removeCoffeeFromListHandler() {
+    setCoffeeActive(name);
+  }
 
   return (
     <CheckoutListItemContainer>
@@ -23,19 +48,21 @@ export function CheckoutListItem({
       <section>
         <div>
           <p>{name}</p>
-          <span>R$ {price.toFixed(2).replace('.', ',')}</span>
+          <span>R$ {valueFormatted}</span>
         </div>
         <div>
           <div>
-            <button onClick={minusOneCoffeeHandler}>
+            {' '}
+            {/*type button pra não ativer o forms */}
+            <button type='button' onClick={minusOneCoffeeHandler}>
               <Minus size={14} weight='bold' id='ListItemMinus' />
             </button>
-            <span>{1}</span>
-            <button onClick={PlusOneCoffeeHandler}>
+            <span>{quantity}</span>
+            <button type='button' onClick={PlusOneCoffeeHandler}>
               <Plus size={14} weight='bold' id='ListItemPlus' />
             </button>
           </div>
-          <button onClick={removeCoffeeFromListHandler}>
+          <button type='button' onClick={removeCoffeeFromListHandler}>
             <Trash size={16} /> REMOVER
           </button>
         </div>

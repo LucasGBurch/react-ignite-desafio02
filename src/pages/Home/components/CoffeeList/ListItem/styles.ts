@@ -118,7 +118,8 @@ export const ListItemContainer = styled.li`
 
 interface CartButtonProps {
   enablecart: 'enabled' | 'disabled';
-}
+} // <StyleSheetManager shouldForwardProp={isPropValid}> conserta o bug junto com a API:
+// import isPropValid from '@emotion/is-prop-valid';
 
 export const CartButton = styled.button<CartButtonProps>`
   display: flex;

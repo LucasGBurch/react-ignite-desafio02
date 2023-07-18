@@ -26,6 +26,10 @@ export function Checkout() {
   function handleFinishOrder(clientData: NewAddressFormData) {
     clientSetter(clientData);
     console.log(clientData);
+
+    // O que falta - validações (decidir se vou usar toastify ainda):
+    // para formulário e para quantidades de cafés;
+    // disabled do botão quando não tem café e se tiver item vazio no formulário
     
     reset();
     navigate('/success');

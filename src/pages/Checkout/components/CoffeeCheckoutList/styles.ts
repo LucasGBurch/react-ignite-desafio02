@@ -1,10 +1,16 @@
 import { styled } from "styled-components";
 
 export const CheckoutListContainer = styled.ul`
-  height: 13rem;
+  height: 15rem;
   width: 23rem;
 
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
   overflow: auto;
+
+  border-bottom: solid 1px ${props => props.theme["base-button"]} ;
 
   &::-webkit-scrollbar {
     height: 8px;
