@@ -18,7 +18,10 @@ export function Header() {
     }
   });
 
-  const selectedCoffeesQuantity = selectedCoffees?.reduce((accumulator, coffees) => accumulator + coffees.quantity, 0)
+  const selectedCoffeesQuantity = selectedCoffees?.reduce(
+    (accumulator, coffees) => accumulator + coffees.quantity,
+    0
+  );
 
   const cartIsNotEmpty = selectedCoffeesQuantity ? true : false;
 

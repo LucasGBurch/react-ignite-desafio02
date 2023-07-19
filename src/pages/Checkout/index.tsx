@@ -1,19 +1,22 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm, FormProvider, useFormState } from 'react-hook-form';
+import { useForm, FormProvider } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 
+import { ClientContext } from '../../contexts/clientContext';
 import { CompleteOrderForm } from './components/CompleteOrderForm';
 import { SelectedCoffees } from './components/SelectedCoffees';
 
-import { CheckoutContainer } from './styles';
-import { useContext } from 'react';
-import { ClientContext } from '../../contexts/clientContext';
 import {
   NewAddressFormData,
   newAddressFormValidationSchema,
 } from '../../@types';
-import { useNavigate } from 'react-router-dom';
+
+import { CheckoutContainer } from './styles';
+import { useTheme } from 'styled-components';
 
 export function Checkout() {
+  const theme = useTheme();
   const { clientSetter } = useContext(ClientContext);
   const navigate = useNavigate();
 
@@ -22,21 +25,15 @@ export function Checkout() {
   });
 
   const { handleSubmit, watch, reset } = newAddressForm;
+  // const rua = watch('Street');
+  // console.log(rua);
 
   function handleFinishOrder(clientData: NewAddressFormData) {
     clientSetter(clientData);
     console.log(clientData);
-
-    // O que falta - validações (decidir se vou usar toastify ainda):
-    // para formulário e para quantidades de cafés;
-    // disabled do botão quando não tem café e se tiver item vazio no formulário
-    
     reset();
     navigate('/success');
   }
-
-  // const rua = watch('Street');
-  // console.log(rua);
 
   return (
     <CheckoutContainer onSubmit={handleSubmit(handleFinishOrder)}>

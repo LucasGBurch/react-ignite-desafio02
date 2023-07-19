@@ -73,4 +73,9 @@ export const ConfirmOrderButton = styled.button`
     background-color: ${props => props.theme["yellow-dark"]};
     transition: 0.5s;
   }
+
+  &:disabled {
+    background-color: ${props => props.theme["base-label"]};
+    cursor: not-allowed;
+  }
 `;

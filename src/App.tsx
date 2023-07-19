@@ -10,14 +10,14 @@ import { CoffeeProvider } from './contexts/coffeesContext';
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-        <GlobalStyle />
-        <BrowserRouter>
-          <CoffeeProvider>
-            <ClientProvider>
-              <Router />
-            </ClientProvider>
-          </CoffeeProvider>
-        </BrowserRouter>
+      <GlobalStyle />
+      <BrowserRouter>
+        <CoffeeProvider>
+          <ClientProvider>
+            <Router />
+          </ClientProvider>
+        </CoffeeProvider>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

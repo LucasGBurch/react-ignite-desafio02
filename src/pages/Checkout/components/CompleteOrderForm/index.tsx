@@ -5,6 +5,10 @@ import {
   MapPinLine,
   Money,
 } from 'phosphor-react';
+import { useContext } from 'react';
+import { useFormContext } from 'react-hook-form';
+
+import { ClientContext } from '../../../../contexts/clientContext';
 
 import {
   CepNumberNeighborhoodInput,
@@ -16,9 +20,6 @@ import {
   PaymentTypeButton,
   StreetInput,
 } from './styles';
-import { useContext } from 'react';
-import { useFormContext } from 'react-hook-form';
-import { ClientContext } from '../../../../contexts/clientContext';
 
 export function CompleteOrderForm() {
   const { register } = useFormContext();
@@ -45,7 +46,12 @@ export function CompleteOrderForm() {
             type='text'
             minLength={8}
             maxLength={10} /*com ponto e traço*/
-            {...register('CEP', { pattern: /(\d{2}[.]?\d{3})[-]?(\d{3})/ })}
+            {...register('CEP', {
+              pattern: {
+                value: /(\d{2}[.]?\d{3})[-]?(\d{3})/,
+                message: 'Digite um CEP válido.'
+              },
+            })}
           />
           <StreetInput
             id='Street'

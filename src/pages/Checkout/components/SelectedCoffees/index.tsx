@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 export function SelectedCoffees() {
   const { coffees } = useContext(CoffeeContext);
 
+// ---VARIÁVEIS DE CONTAGEM DE VALORES---
   const deliverValueNumber = 3.5;
   const deliverValueString = String(deliverValueNumber)
     .replace('.', ',')
@@ -22,7 +23,6 @@ export function SelectedCoffees() {
     '.',
     ','
   );
-
   const finalTotalNumber = (itemsTotalNumber! + deliverValueNumber).toFixed(2);
   const finalTotalString = String(finalTotalNumber).replace('.', ',');
 
@@ -30,8 +30,19 @@ export function SelectedCoffees() {
     return coffee.isActive;
   }); // Converter truthy ou falsy em boolean com !!:
   const thereIsActiveCoffees = !!activeCoffees;
-
   // console.log(thereIsActiveCoffees);
+
+
+// ---VARIÁVEIS PARA RENDERIZAÇÕES E CONDICIONAIS---
+  const coffeesInTheCart = coffees
+    ?.filter((coffee) => {
+      if (coffee.isActive && coffee.quantity > 0) {
+        return coffee.quantity;
+      }
+    })
+    .reduce((accumulator, coffees) => accumulator + coffees.quantity, 0);
+
+  const thereIsCoffeesInTheCart = !!coffeesInTheCart;
 
   const listContent = thereIsActiveCoffees ? (
     <CheckoutList />
@@ -59,7 +70,9 @@ export function SelectedCoffees() {
           <span>R$ {finalTotalString}</span>
         </h3>
       </section>
-      <ConfirmOrderButton type='submit'>Confirmar Pedido</ConfirmOrderButton>
+      <ConfirmOrderButton type='submit' disabled={!thereIsCoffeesInTheCart}>
+        Confirmar Pedido
+      </ConfirmOrderButton>
     </SelectedCoffeesContainer>
   );
 }
