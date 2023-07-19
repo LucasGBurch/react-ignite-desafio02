@@ -10,6 +10,7 @@ import { CoffeeProvider } from './contexts/coffeesContext';
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
+      
       <GlobalStyle />
       <BrowserRouter>
         <CoffeeProvider>
