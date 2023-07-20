@@ -69,4 +69,15 @@ export const HeaderContainer = styled.header`
       color: ${(props) => props.theme['yellow-dark']};
     }
   }
+
+  @media screen and (max-width: 1280px) {
+    justify-content: space-evenly;
+  }
+
+  @media screen and (max-width: 640px) {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 10rem;
+    padding: 2rem;
+  }
 `;

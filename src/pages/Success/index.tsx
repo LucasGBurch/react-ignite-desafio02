@@ -6,7 +6,7 @@ import { ClientContext } from '../../contexts/clientContext';
 
 export function Success() {
   const { client, paymentType } = useContext(ClientContext);
-  console.log(client)
+  // console.log(client)
 
   const paymentTypeText =
     paymentType === 'credit'
@@ -20,10 +20,8 @@ export function Success() {
   return (
     <SuccessContainer>
       <section>
-        <div>
-          <h2>Uhu! Pedido confirmado</h2>
-          <p>Agora é só aguardar que logo o café chegará até você</p>
-        </div>
+        <h2>Uhu! Pedido confirmado</h2>
+        <p>Agora é só aguardar que logo o café chegará até você</p>
       </section>
       <section>
         <ul>

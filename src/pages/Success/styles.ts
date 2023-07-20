@@ -2,19 +2,24 @@ import styled from 'styled-components';
 
 export const SuccessContainer = styled.main`
   height: 26rem;
-  width: 90rem;
+  max-width: 70rem;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
 
-  margin-top: 5rem;
   padding: 0 10rem;
+  margin-top: 5rem;
 
-  section {
+  section:first-child {
     display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 
-    height: 4.5rem;
-    width: 34.5rem;
+    min-height: 4.5rem;
+    max-width: 34.5rem;
+
+    margin-bottom: 2rem;
 
     h2 {
       color: ${(props) => props.theme['yellow-dark']};
@@ -32,15 +37,15 @@ export const SuccessContainer = styled.main`
       font-size: 1.25rem;
       line-height: 130%;
       width: 36.75rem;
-      margin-bottom: 4.125rem;
     }
   }
 
-  section {
+  section:last-child {
     display: flex;
-    height: 21.375rem;
+    max-height: 21.375rem;
+    gap: 6.375rem;
 
-    width: 36.75rem;
+    max-width: 36.75rem;
 
     ul {
       // do background à border: truque pra gradiente + radius
@@ -63,7 +68,6 @@ export const SuccessContainer = styled.main`
       justify-content: center;
       gap: 2rem;
 
-      margin-right: 6.375rem;
       padding: 2.5rem;
 
       list-style: none;
@@ -86,7 +90,7 @@ export const SuccessContainer = styled.main`
           gap: 0.25rem;
 
           span {
-            line-height: 1.25rem;
+            line-height: 1.375rem;
             max-width: 26rem;
           }
         }
@@ -109,6 +113,81 @@ export const SuccessContainer = styled.main`
 
     #CurrencyDollarSuccess {
       background: ${(props) => props.theme['yellow-dark']};
+    }
+  }
+
+  @media screen and (max-width: 1280px) {
+    align-items: center;
+    gap: 2rem;
+    padding: 0 2rem;
+    max-width: 30rem;
+    margin: 2rem auto;
+
+    section:first-child {
+      align-items: center;
+      width: 22rem;
+      text-align: center;
+
+      p {
+        width: 20rem;
+      }
+    }
+
+    section:last-child {
+      gap: 1rem;
+      flex-direction: column;
+
+      ul {
+        padding: 1.5rem;
+        width: 26rem;
+
+        li {
+          width: 22rem;
+
+          div {
+            span {
+              line-height: 1.5rem;
+              max-width: 20rem;
+            }
+          }
+        }
+      }
+
+      img {
+        width: 25rem;
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 0 1rem;
+    max-width: 20rem;
+
+    section:first-child {
+      max-width: 20rem;
+      gap: 1rem;
+    }
+
+    section:last-child {
+      max-width: 20rem;
+
+      ul {
+        padding: 1.rem;
+        width: 20rem;
+
+        li {
+          width: 18rem;
+        }
+      }
+
+      span {
+        font-size: 0.875rem;
+        line-height: 1rem;
+      }
+
+      img {
+        display: none;
+      }
     }
   }
 `;
