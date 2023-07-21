@@ -13,7 +13,6 @@ export const IntroContainer = styled.section`
   div {
     display: flex;
     flex-direction: column;
-    height: 21.375rem;
 
     padding-bottom: 1.125rem;
     width: 36.75rem;
@@ -71,16 +70,67 @@ export const IntroContainer = styled.section`
       }
 
       #TimerIntro {
-        background-color: ${props => props.theme.yellow};
+        background-color: ${(props) => props.theme.yellow};
       }
 
       #PackageIntro {
-        background-color: ${props => props.theme['base-text']};
+        background-color: ${(props) => props.theme['base-text']};
       }
 
       #CoffeeIntro {
-        background-color: ${props => props.theme.purple};
+        background-color: ${(props) => props.theme.purple};
       }
+    }
+  }
+
+  @media screen and (max-width: 1280px) {
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    height: 50rem;
+
+    img {
+      width: 25rem;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    height: 35rem;
+    justify-content: flex-start;
+
+    div {
+      align-items: center;
+      text-align: center;
+      max-width: 20rem;
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+        width: 20rem;
+      }
+
+      div {
+        padding-bottom: 0;
+        padding-left: 0.5rem;
+        height: 6rem;
+        width: 20rem;
+
+        div {
+          width: 18rem;
+        }
+
+        div:last-child {
+          width: 20rem;
+        }
+      }
+    }
+
+    img {
+      display: none;
     }
   }
 `;

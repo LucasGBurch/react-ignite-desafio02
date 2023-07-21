@@ -11,7 +11,7 @@ export const ListItemContainer = styled.li`
 
   background-color: ${(props) => props.theme['base-card']};
 
-  height: 19.375rem;
+  min-height: 19.375rem;
   width: 16rem;
 
   img {

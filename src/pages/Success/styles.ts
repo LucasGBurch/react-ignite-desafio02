@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const SuccessContainer = styled.main`
-  height: 26rem;
+  min-height: 26rem;
   max-width: 70rem;
   width: 100%;
 
@@ -42,7 +42,7 @@ export const SuccessContainer = styled.main`
 
   section:last-child {
     display: flex;
-    max-height: 21.375rem;
+    min-height: 21.375rem;
     gap: 6.375rem;
 
     max-width: 36.75rem;
