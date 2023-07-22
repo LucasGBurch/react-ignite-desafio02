@@ -2,8 +2,8 @@ import { styled } from 'styled-components';
 import * as RadioGroup from '@radix-ui/react-radio-group';
 
 export const CompleteOrderFormContainer = styled.section`
-  height: 40rem;
-  width: 40rem;
+  min-height: 40rem;
+  max-width: 40rem;
 
   display: flex;
   flex-direction: column;
@@ -119,6 +119,10 @@ export const BaseFormInput = styled.input`
   &:nth-last-child(-n + 3) {
     // últimos 3 inputs
     margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 700px) {
+    // PAREI AQUI PARA RESPONSIVO MOBILE
   }
 `;
 
