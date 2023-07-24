@@ -2,13 +2,12 @@ import { styled } from 'styled-components';
 
 export const CheckoutListItemContainer = styled.li`
   height: 5rem;
-  width: 22.25rem;
+  max-width: 22.25rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1.25rem;
-
 
   &:first-child {
     margin-top: 0;
@@ -66,9 +65,9 @@ export const CheckoutListItemContainer = styled.li`
         }
 
         svg:hover {
-            color: ${(props) => props.theme['purple-dark']};
-            transition: 0.5s;
-          }
+          color: ${(props) => props.theme['purple-dark']};
+          transition: 0.5s;
+        }
       }
 
       button {
@@ -102,6 +101,22 @@ export const CheckoutListItemContainer = styled.li`
           }
 
           transition: 0.5s;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 540px) {
+    gap: 0.75rem;
+
+    section {
+      div:first-child {
+        p {
+          font-size: 0.85rem;
+        }
+
+        span {
+          font-size: 1rem;
         }
       }
     }

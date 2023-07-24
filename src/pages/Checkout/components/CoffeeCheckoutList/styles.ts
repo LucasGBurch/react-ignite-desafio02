@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 
 export const CheckoutListContainer = styled.ul`
-  height: 15rem;
-  width: 23rem;
+  min-height: 15rem;
+  max-width: 23rem;
 
   display: flex;
   flex-direction: column;
@@ -25,5 +25,14 @@ export const CheckoutListContainer = styled.ul`
   &::-webkit-scrollbar-thumb:hover {
     background: ${props => props.theme.purple};
     transition: 0.5s;
+  }
+
+  @media screen and (max-width: 540px) {
+    max-width: 18rem;
+
+    &::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+  }
   }
 `;

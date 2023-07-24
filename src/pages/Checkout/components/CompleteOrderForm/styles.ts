@@ -13,13 +13,13 @@ export const CompleteOrderFormContainer = styled.section`
     background-color: ${(props) => props.theme['base-card']};
     border-radius: 6px;
 
-    height: 23.25rem;
-    width: 40rem;
+    min-height: 23.25rem;
+    max-width: 40rem;
     padding: 2.5rem;
 
     div:first-child {
       margin-bottom: 2rem;
-      height: 2.75rem;
+      min-height: 2.75rem;
       display: flex;
       gap: 0.5rem;
 
@@ -61,17 +61,18 @@ export const CompleteOrderFormContainer = styled.section`
   }
 
   section:last-child {
+    // Botões de forma de pagamento
     background-color: ${(props) => props.theme['base-card']};
-    height: 13rem;
+    min-height: 13rem;
 
-    width: 40rem;
+    max-width: 40rem;
     padding: 2.5rem;
 
     border-radius: 6px;
 
     div:first-child {
       margin-bottom: 2rem;
-      height: 2.75rem;
+      min-height: 2.75rem;
       display: flex;
       gap: 0.5rem;
 
@@ -92,6 +93,56 @@ export const CompleteOrderFormContainer = styled.section`
 
       #CurrencyDollarCheckout {
         color: ${(props) => props.theme.purple};
+      }
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+
+    section:first-child {
+      max-width: 18rem;
+      padding: 1rem;
+
+      div:first-child {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      div:last-child {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        span {
+          top: 1.8rem;
+          right: 0;
+          left: 1.5rem;
+        }
+      }
+    }
+
+    
+    section:last-child {
+      max-width: 18rem;
+      min-height: 25rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      div:first-child {
+        margin-bottom: 0;
+        flex-direction: column;
+        align-items: center;
+
+        div {
+          gap: 1rem;
+        }
       }
     }
   }
@@ -122,16 +173,24 @@ export const BaseFormInput = styled.input`
   }
 
   @media screen and (max-width: 700px) {
-    // PAREI AQUI PARA RESPONSIVO MOBILE
+    margin-bottom: 0;
   }
 `;
 
 export const CepNumberNeighborhoodInput = styled(BaseFormInput)`
   margin-right: 0.75rem;
+
+  @media screen and (max-width: 700px) {
+    margin-right: 0;
+  }
 `;
 
 export const StreetInput = styled(BaseFormInput)`
   width: 35rem;
+
+  @media screen and (max-width: 700px) {
+    width: 12.5rem;
+  }
 `;
 
 export const ComplementInput = styled(BaseFormInput)`
@@ -148,6 +207,11 @@ export const ComplementInput = styled(BaseFormInput)`
 export const CityInput = styled(BaseFormInput)`
   margin-right: 0.75rem;
   width: 17.25rem;
+
+  @media screen and (max-width: 700px) {
+    width: 12.5rem;
+    margin-right: 0;
+  }
 `;
 
 export const FederativeUnitInput = styled(BaseFormInput)`
@@ -157,6 +221,12 @@ export const FederativeUnitInput = styled(BaseFormInput)`
 export const PaymentType = styled(RadioGroup.Root)`
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 700px) {
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
 `;
 
 export const PaymentTypeButton = styled(RadioGroup.Item)`

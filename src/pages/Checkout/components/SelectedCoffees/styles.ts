@@ -4,6 +4,10 @@ export const SelectedCoffeesContainer = styled.section`
   height: 31.5rem;
   width: 28rem;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   background-color: ${props => props.theme["base-card"]};
   padding: 2.5rem;
 
@@ -53,11 +57,20 @@ export const SelectedCoffeesContainer = styled.section`
       justify-content: space-between;
     }
   }
+
+  @media screen and (max-width: 540px) {
+    width: 18rem;
+    padding: 1rem;
+
+    section {
+      width: 18rem;
+    }
+  }
 `;
 
 export const ConfirmOrderButton = styled.button`
   height: 2.875rem;
-  width: 23rem;
+  width: 100%;
   cursor: pointer;
 
   background-color: ${props => props.theme.yellow};
@@ -77,5 +90,9 @@ export const ConfirmOrderButton = styled.button`
   &:disabled {
     background-color: ${props => props.theme["base-label"]};
     cursor: not-allowed;
+  }
+
+  @media screen and (max-width: 540px) {
+    max-width: 18rem;
   }
 `;

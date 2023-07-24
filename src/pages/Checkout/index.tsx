@@ -30,7 +30,7 @@ export function Checkout() {
 
   function handleFinishOrder(clientData: NewAddressFormData) {
     clientSetter(clientData);
-    console.log(clientData);
+    // console.log(clientData);
     reset();
     navigate('/success');
   }
