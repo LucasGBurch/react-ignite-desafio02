@@ -5,11 +5,11 @@
 
 - Essa aplicação possui três páginas/rotas diferentes:
 
-  - Home - Introduzindo o site e, logo abaixo, apresentando Cards com displays de cada produto/café. A ativação/desativação deles ocorre ao clicar no botão de carrinho de cada um. Quando ativo, as quantidades de cafés do Card são acrescentadas ao carrinho geral, localizado no Cabeçalho/Header;
+  - Home - Introduzindo o site e, logo abaixo, apresentando Cards com displays de cada produto/café. A ativação/desativação deles ocorre ao clicar no botão de carrinho de cada um. Quando ativo, as quantidades de cafés do Card são acrescentadas ao carrinho geral, localizado no Cabeçalho/Header. Essa manipulação de totais e os dados do menu de cafés entre o Header, a Home e a Checkout é gerenciada por uma ContextAPI com os dados dos cafés. O carrinho dos totais é sempre atualizado por meio de um useEffect(() => {}, []), para evitar o efeito colateral dos dados de cafés serem assíncronos. Em outras palavras, sem o useEffect o carrinho com os totais está sempre um passo atrasado do verdadeiro estado dos dados de cafés;
 
-  - Checkout - Página que, além de renderizar numa lista os cafés selecionados, também possui um formulário para preencher dados de endereço para entrega. Essa parte ainda é estática, pois não era objetivo do projeto desenvolver esse tipo de API. O formulário tem suas estruturas de validação feitas com a biblioteca React-Hook-Form em conjunto com objetos de validação Zod. Sem passar na validação, não é possível prosseguir para finalizar a entrega. O botão para isso também fica inativo caso não haja cafés no carrinho. Por fim, foi feito através da biblioteca radix 3 RadioButtons para o usuário marcar a forma de pagamento;
+  - Checkout - Página que, além de renderizar numa lista os cafés selecionados, também possui um formulário para preencher dados de endereço para entrega. Essa parte ainda é estática, pois não era objetivo do projeto desenvolver esse tipo de API. O formulário tem suas estruturas de validação feitas com a biblioteca React-Hook-Form em conjunto com objetos de validação Zod. Sem passar na validação, não é possível prosseguir para finalizar a entrega. O botão para isso também fica inativo caso não haja cafés no carrinho. Por fim, foi feito através da biblioteca radix 3 RadioButtons para o usuário marcar a forma de pagamento. Os valores totais dos cafés são calculados utilizando as informações do Contexto dos cafés, com os preços e quantidades sendo obtidos através do método reduce();
 
-  - Success - Página estática para qual a aplicação navega depois de confirmar dados de café e endereço.
+  - Success - Página estática para qual a aplicação navega depois de confirmar dados de café e endereço. Ela faz uso de dados de endereço e forma de pagamento armazenado na ContextAPI criada para transmissão de dados de Clientes.
 
 # Instruções para rodar:
 
