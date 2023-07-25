@@ -119,7 +119,7 @@ export const CompleteOrderFormContainer = styled.section`
         gap: 1rem;
 
         span {
-          top: 1.8rem;
+          top: -2.8rem;
           right: 0;
           left: 1.5rem;
         }
